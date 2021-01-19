@@ -29,6 +29,8 @@ public:
 private:
     bool is_initialized_;
     int64_t previous_timestamp_;
+
+    // increase the noise component
     float noise_ax;
     float noise_ay;
 };

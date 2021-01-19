@@ -4,6 +4,10 @@
 
 #include "kalman_filter.h"
 
+#include <iostream>
+
+using namespace std;
+
 KalmanFilter::KalmanFilter() {}
 
 KalmanFilter::~KalmanFilter() {}
@@ -17,6 +21,7 @@ void KalmanFilter::Predict()
 
 void KalmanFilter::Update(const VectorXd &z)
 {
+    std::cout << z << "\n";
     VectorXd z_pred = H_ * x_;
     VectorXd y = z - z_pred;
     VectorXd Ht = H_.transpose();
@@ -26,7 +31,7 @@ void KalmanFilter::Update(const VectorXd &z)
     MatrixXd K = PHt * Si;
 
     // new  estimate
-    x_ = x_ * (K * y);
+    x_ = x_ + (K * y);
     long x_size = x_.size();
     MatrixXd I = MatrixXd::Identity(x_size, x_size);
     P_ = (I - K * H_) * P_;

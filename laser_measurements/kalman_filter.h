@@ -21,16 +21,22 @@ public:
 
     void Update(const VectorXd &z);
 
+    // state vector
     VectorXd x_;
 
+    // state covariance matrix
     MatrixXd P_;
 
+    // state transition matrix
     MatrixXd F_;
 
+    //process covariance matrix
     MatrixXd Q_;
 
+    // measurement matrix
     MatrixXd H_;
 
+    // measurement covariance matrix
     MatrixXd R_;
 
 };

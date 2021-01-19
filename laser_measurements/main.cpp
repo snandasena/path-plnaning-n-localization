@@ -45,14 +45,14 @@ int main()
         {
             // read measurements
             meas_package.sensor_type_ = MeasurementPackage::LASER;
-            meas_package.raw_measurement_ = VectorXd(2);
+            meas_package.raw_measurements_ = VectorXd(2);
             float x;
             float y;
 
             iss >> x;
             iss >> y;
 
-            meas_package.raw_measurement_ << x, y;
+            meas_package.raw_measurements_ << x, y;
             iss >> timestamp;
             meas_package.timestamp_ = timestamp;
             measurement_pack_list.emplace_back(meas_package);

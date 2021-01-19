@@ -7,6 +7,8 @@
 
 #include "../Eigen/Dense"
 
+using Eigen::VectorXd;
+
 class MeasurementPackage
 {
 public:
@@ -15,7 +17,7 @@ public:
         LASER, RADAR
     } sensor_type_;
 
-    Eigen::VectorXd raw_measurement_;
+    VectorXd raw_measurements_;
     int64_t timestamp_;
 };
 

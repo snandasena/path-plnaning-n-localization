@@ -59,8 +59,8 @@ void Tracking::ProcessMeasurement(const MeasurementPackage &measurement_pack)
     if (is_initialized_)
     {
 
-        kf_.x_ << measurement_pack.raw_measurement_[0],
-                measurement_pack.raw_measurement_[1],
+        kf_.x_ << measurement_pack.raw_measurements_[0],
+                measurement_pack.raw_measurements_[1],
                 0,
                 0;
         previous_timestamp_ = measurement_pack.timestamp_;
@@ -90,7 +90,9 @@ void Tracking::ProcessMeasurement(const MeasurementPackage &measurement_pack)
 
     // predict
     kf_.Predict();
-    kf_.Update(measurement_pack.raw_measurement_);
+
+    // measurement update
+    kf_.Update(measurement_pack.raw_measurements_);
 
     cout << "x_ = " << kf_.x_ << "\n";
     cout << "P_ = " << kf_.P_ << "\n";

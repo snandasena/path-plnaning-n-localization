@@ -12,4 +12,6 @@ set(CMAKE_CXX_STANDARD 14)
 #        laser_measurements/tracking.h
 #        laser_measurements/main.cpp)
 
-add_executable(jacobian jacobian/main.cpp)
+#add_executable(jacobian jacobian/main.cpp)
+
+add_executable(rmse  rmse.cpp)

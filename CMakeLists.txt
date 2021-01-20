@@ -5,9 +5,11 @@ set(CMAKE_CXX_STANDARD 14)
 
 
 #add_executable(kalman-filter  main.cpp)
-add_executable(kalman-filter laser_measurements/kalman_filter.cpp
-        laser_measurements/kalman_filter.h
-        laser_measurements/measurement_package.h
-        laser_measurements/tracking.cpp
-        laser_measurements/tracking.h
-        laser_measurements/main.cpp)
+#add_executable(kalman-filter laser_measurements/kalman_filter.cpp
+#        laser_measurements/kalman_filter.h
+#        laser_measurements/measurement_package.h
+#        laser_measurements/tracking.cpp
+#        laser_measurements/tracking.h
+#        laser_measurements/main.cpp)
+
+add_executable(jacobian jacobian/main.cpp)

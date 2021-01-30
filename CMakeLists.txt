@@ -14,4 +14,5 @@ set(CMAKE_CXX_STANDARD 14)
 
 #add_executable(jacobian jacobian/main.cpp)
 
-add_executable(rmse  rmse.cpp)
+#add_executable(rmse  rmse.cpp )
+add_executable(normpdf  normpdf/main.cpp normpdf/help_functions.h)

@@ -15,4 +15,5 @@ set(CMAKE_CXX_STANDARD 14)
 #add_executable(jacobian jacobian/main.cpp)
 
 #add_executable(rmse  rmse.cpp )
-add_executable(normpdf  normpdf/main.cpp normpdf/help_functions.h)
+#add_executable(normpdf  normpdf/main.cpp normpdf/help_functions.h)
+add_executable(mortion-model mortion-model/main.cpp mortion-model/helpers.h)

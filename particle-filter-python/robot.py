@@ -27,9 +27,9 @@ class robot:
         self.x = random.random() * world_size
         self.y = random.random() * world_size
         self.orientation = random.random() * 2.0 * pi
-        self.forward_noise = 0.0;
-        self.turn_noise = 0.0;
-        self.sense_noise = 0.0;
+        self.forward_noise = 0.0
+        self.turn_noise = 0.0
+        self.sense_noise = 0.0
 
     def set(self, new_x, new_y, new_orientation):
         if new_x < 0 or new_x >= world_size:
@@ -45,9 +45,9 @@ class robot:
     def set_noise(self, new_f_noise, new_t_noise, new_s_noise):
         # makes it possible to change the noise parameters
         # this is often useful in particle filters
-        self.forward_noise = float(new_f_noise);
-        self.turn_noise = float(new_t_noise);
-        self.sense_noise = float(new_s_noise);
+        self.forward_noise = float(new_f_noise)
+        self.turn_noise = float(new_t_noise)
+        self.sense_noise = float(new_s_noise)
 
     def sense(self):
         Z = []
@@ -122,11 +122,16 @@ def eval(r, p):
 # print(myrobot.sense())
 
 
+myrobot = robot()
+myrobot = myrobot.move(0.1, 5.0)
+Z = myrobot.sense()
+
 N = 1000
 p = []
 
 for i in range(N):
     x = robot()
+    x.set_noise(0.05, 0.05, 5.0)
     p.append(x)
 
 print(len(p))
@@ -137,3 +142,9 @@ for i in range(N):
     p2.append(p[i].move(0.1, 5.0))
 
 p = p2
+
+w = []
+for i in range(N):
+    w.append(p[i].measurement_prob(Z))
+
+print(w)

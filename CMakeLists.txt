@@ -21,4 +21,6 @@ set(CMAKE_CXX_STANDARD 14)
 #add_executable(observation-model observation-model/main.cpp observation-model/helpers.h)
 #add_executable(markov-localization-filter markov-localization-filter/main.cpp markov-localization-filter/helpers.h)
 #add_executable(particle-filter-cpp particle-filter-cpp/gaussian_sample.cpp)
-add_executable(particle-filter-cpp particle-filter-cpp/multi_gussian.cpp particle-filter-cpp/multi_gussian.h particle-filter-cpp/multi_guss_sol.cpp)
+#add_executable(particle-filter-cpp particle-filter-cpp/multi_gussian.cpp particle-filter-cpp/multi_gussian.h particle-filter-cpp/multi_guss_sol.cpp)
+
+add_executable(naive_bayes naive_bayes/main.cpp naive_bayes/classifier.cpp naive_bayes/classifier.h)

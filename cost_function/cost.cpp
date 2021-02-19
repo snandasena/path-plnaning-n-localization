@@ -16,5 +16,9 @@ double goal_distance_cost(int goal_lane, int intended_lane, int final_lane,
 double inefficiency_cost(int target_speed, int intended_lane, int final_lane,
                          const std::vector<int> &lane_speeds)
 {
+    double speed_inteded = lane_speeds[intended_lane] * 1.0;
+    double speed_final = lane_speeds[final_lane] * 1.0;
+
+    return (2.0 * target_speed - speed_inteded - speed_final) / target_speed;
 
 }

@@ -37,7 +37,7 @@ int main()
     std::vector<int> lane_speeds = {6, 7, 8, 9};
 
     // Test cases used for grading - do not change.
-    double cost;
+//    double cost;
     cout << "Costs for (intended_lane, final_lane):" << endl;
     cout << "---------------------------------------------------------" << endl;
     cost = inefficiency_cost(target_speed, 3, 3, lane_speeds);

@@ -25,4 +25,9 @@ set(CMAKE_CXX_STANDARD 14)
 
 #add_executable(naive_bayes naive_bayes/main.cpp naive_bayes/classifier.cpp naive_bayes/classifier.h)
 
-add_executable(cost_function cost_function/main.cpp cost_function/cost.cpp cost_function/cost.h)
+#add_executable(cost_function cost_function/main.cpp cost_function/cost.cpp cost_function/cost.h)
+
+add_executable(behavior_planner behavior_planner/main.cpp
+        behavior_planner/vehicle.cpp behavior_planner/vehicle.h
+        behavior_planner/cost.h behavior_planner/cost.cpp
+        behavior_planner/road.cpp behavior_planner/road.h)

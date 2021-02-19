@@ -23,4 +23,6 @@ set(CMAKE_CXX_STANDARD 14)
 #add_executable(particle-filter-cpp particle-filter-cpp/gaussian_sample.cpp)
 #add_executable(particle-filter-cpp particle-filter-cpp/multi_gussian.cpp particle-filter-cpp/multi_gussian.h particle-filter-cpp/multi_guss_sol.cpp)
 
-add_executable(naive_bayes naive_bayes/main.cpp naive_bayes/classifier.cpp naive_bayes/classifier.h)
+#add_executable(naive_bayes naive_bayes/main.cpp naive_bayes/classifier.cpp naive_bayes/classifier.h)
+
+add_executable(cost_function cost_function/main.cpp cost_function/cost.cpp cost_function/cost.h)

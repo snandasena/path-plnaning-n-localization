@@ -1,3 +1,7 @@
+//
+// Created by sajith on 2/20/21.
+//
+
 #include "cost.h"
 #include <cmath>
 #include <functional>
@@ -13,12 +17,12 @@ using std::vector;
 /**
  * TODO: change weights for cost functions.
  */
-const float REACH_GOAL = 0;
-const float EFFICIENCY = 0;
+const float REACH_GOAL = pow(10, 6);
+const float EFFICIENCY = pow(10, 5);
 
-// Here we have provided two possible suggestions for cost functions, but feel 
+// Here we have provided two possible suggestions for cost functions, but feel
 //   free to use your own! The weighted cost over all cost functions is computed
-//   in calculate_cost. The data from get_helper_data will be very useful in 
+//   in calculate_cost. The data from get_helper_data will be very useful in
 //   your implementation of the cost functions below. Please see get_helper_data
 //   for details on how the helper data is computed.
 
@@ -39,7 +43,8 @@ float goal_distance_cost(const Vehicle &vehicle,
     {
         cost = 1 - 2 * exp(-(abs(2.0 * vehicle.goal_lane - data["intended_lane"]
                                  - data["final_lane"]) / distance));
-    } else
+    }
+    else
     {
         cost = 1;
     }
@@ -139,10 +144,12 @@ map<string, float> get_helper_data(const Vehicle &vehicle,
     if (trajectory_last.state.compare("PLCL") == 0)
     {
         intended_lane = trajectory_last.lane + 1;
-    } else if (trajectory_last.state.compare("PLCR") == 0)
+    }
+    else if (trajectory_last.state.compare("PLCR") == 0)
     {
         intended_lane = trajectory_last.lane - 1;
-    } else
+    }
+    else
     {
         intended_lane = trajectory_last.lane;
     }

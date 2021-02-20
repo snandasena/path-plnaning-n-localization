@@ -1,17 +1,17 @@
 //
-// Created by sajith on 2/19/21.
+// Created by sajith on 2/20/21.
 //
 
 #ifndef KALMAN_FILTER_ROAD_H
 #define KALMAN_FILTER_ROAD_H
-
 
 #include <map>
 #include <string>
 #include <vector>
 #include "vehicle.h"
 
-class Road {
+class Road
+{
 public:
     // Constructor
     Road(int speed_limit, double traffic_density, std::vector<int> &lane_speeds);
@@ -48,5 +48,6 @@ public:
     std::string ego_rep = " *** ";
 
     std::vector<int> lane_speeds;
+};
 
 #endif //KALMAN_FILTER_ROAD_H

@@ -1,3 +1,7 @@
+//
+// Created by sajith on 2/20/21.
+//
+
 #include "vehicle.h"
 #include <algorithm>
 #include <iterator>
@@ -48,12 +52,29 @@ vector<Vehicle> Vehicle::choose_next_state(map<int, vector<Vehicle>> &prediction
      *
      * TODO: Your solution here.
      */
+    vector<string> states = successor_states();
+    float cost;
+    vector<float> costs;
+    vector<vector<Vehicle>> final_trajectories;
 
+    for (vector<string>::iterator it = states.begin(); it != states.end(); ++it)
+    {
+        vector<Vehicle> trajectory = generate_trajectory(*it, predictions);
+        if (trajectory.size() != 0)
+        {
+            cost = calculate_cost(*this, predictions, trajectory);
+            costs.push_back(cost);
+            final_trajectories.push_back(trajectory);
+        }
+    }
+
+    vector<float>::iterator best_cost = min_element(begin(costs), end(costs));
+    int best_idx = distance(begin(costs), best_cost);
 
     /**
      * TODO: Change return value here:
      */
-    return generate_trajectory("KL", predictions);
+    return final_trajectories[best_idx];
 }
 
 vector<string> Vehicle::successor_states()
@@ -68,14 +89,16 @@ vector<string> Vehicle::successor_states()
     {
         states.push_back("PLCL");
         states.push_back("PLCR");
-    } else if (state.compare("PLCL") == 0)
+    }
+    else if (state.compare("PLCL") == 0)
     {
         if (lane != lanes_available - 1)
         {
             states.push_back("PLCL");
             states.push_back("LCL");
         }
-    } else if (state.compare("PLCR") == 0)
+    }
+    else if (state.compare("PLCR") == 0)
     {
         if (lane != 0)
         {
@@ -97,13 +120,16 @@ vector<Vehicle> Vehicle::generate_trajectory(string state,
     if (state.compare("CS") == 0)
     {
         trajectory = constant_speed_trajectory();
-    } else if (state.compare("KL") == 0)
+    }
+    else if (state.compare("KL") == 0)
     {
         trajectory = keep_lane_trajectory(predictions);
-    } else if (state.compare("LCL") == 0 || state.compare("LCR") == 0)
+    }
+    else if (state.compare("LCL") == 0 || state.compare("LCR") == 0)
     {
         trajectory = lane_change_trajectory(state, predictions);
-    } else if (state.compare("PLCL") == 0 || state.compare("PLCR") == 0)
+    }
+    else if (state.compare("PLCL") == 0 || state.compare("PLCR") == 0)
     {
         trajectory = prep_lane_change_trajectory(state, predictions);
     }
@@ -130,7 +156,8 @@ vector<float> Vehicle::get_kinematics(map<int, vector<Vehicle>> &predictions,
         {
             // must travel at the speed of traffic, regardless of preferred buffer
             new_velocity = vehicle_ahead.v;
-        } else
+        }
+        else
         {
             float max_velocity_in_front = (vehicle_ahead.s - this->s
                                            - this->preferred_buffer) + vehicle_ahead.v
@@ -139,7 +166,8 @@ vector<float> Vehicle::get_kinematics(map<int, vector<Vehicle>> &predictions,
                                              max_velocity_accel_limit),
                                     this->target_speed);
         }
-    } else
+    }
+    else
     {
         new_velocity = std::min(max_velocity_accel_limit, this->target_speed);
     }
@@ -191,7 +219,8 @@ vector<Vehicle> Vehicle::prep_lane_change_trajectory(string state,
         new_s = curr_lane_new_kinematics[0];
         new_v = curr_lane_new_kinematics[1];
         new_a = curr_lane_new_kinematics[2];
-    } else
+    }
+    else
     {
         vector<float> best_kinematics;
         vector<float> next_lane_new_kinematics = get_kinematics(predictions, new_lane);
@@ -199,7 +228,8 @@ vector<Vehicle> Vehicle::prep_lane_change_trajectory(string state,
         if (next_lane_new_kinematics[1] < curr_lane_new_kinematics[1])
         {
             best_kinematics = next_lane_new_kinematics;
-        } else
+        }
+        else
         {
             best_kinematics = curr_lane_new_kinematics;
         }

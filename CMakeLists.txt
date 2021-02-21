@@ -30,4 +30,4 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(behavior_planner behavior_planner/main.cpp
         behavior_planner/vehicle.cpp behavior_planner/vehicle.h
         behavior_planner/cost.h behavior_planner/cost.cpp
-        behavior_planner/road.cpp behavior_planner/road.h)
+        behavior_planner/road.h behavior_planner/road.cpp)

@@ -27,7 +27,10 @@ set(CMAKE_CXX_STANDARD 14)
 
 #add_executable(cost_function cost_function/main.cpp cost_function/cost.cpp cost_function/cost.h)
 
-add_executable(behavior_planner behavior_planner/main.cpp
-        behavior_planner/vehicle.cpp behavior_planner/vehicle.h
-        behavior_planner/cost.h behavior_planner/cost.cpp
-        behavior_planner/road.h behavior_planner/road.cpp)
+#add_executable(behavior_planner behavior_planner/main.cpp
+#        behavior_planner/vehicle.cpp behavior_planner/vehicle.h
+#        behavior_planner/cost.h behavior_planner/cost.cpp
+#        behavior_planner/road.h behavior_planner/road.cpp)
+
+
+add_executable(hybrid_a_star hybrid_a_star/main.cpp hybrid_a_star/hybrid_breadth_first.cpp hybrid_a_star/hybrid_breadth_first.h)

@@ -11,14 +11,18 @@ using std::vector;
 
 class HBF
 {
+public:
+    // Constructor
     HBF();
 
+    // Destructor
     virtual ~HBF();
 
     // HBF structs
     struct maze_s
     {
-        int g; // iterations
+        int g;  // iteration
+        int f;
         double x;
         double y;
         double theta;
@@ -36,19 +40,22 @@ class HBF
 
     int idx(double float_num);
 
-    vector<maze_s> expand(maze_s &state);
+    double heuristic(double x, double y, vector<int> &goal);
 
+    static bool compare_maze_s(const HBF::maze_s &lhs, const HBF::maze_s &rhs);
 
-    vector<maze_s> reconstruct_path(vector<vector<vector<maze_s>>> &came_from, vector<double> &start, maze_s &final);
+    vector<maze_s> expand(maze_s &state, vector<int> &goal);
 
-    maze_path search(vector<vector<int>> &grid, vector<double> &start, vector<int> &goal);
+    vector<maze_s> reconstruct_path(vector<vector<vector<maze_s>>> &came_from,
+                                    vector<double> &start, HBF::maze_s &final);
+
+    maze_path search(vector<vector<int>> &grid, vector<double> &start,
+                     vector<int> &goal);
 
 private:
-
     const int NUM_THETA_CELLS = 90;
     const double SPEED = 1.45;
     const double LENGTH = 0.5;
-
 };
 
 #endif //KALMAN_FILTER_HYBRID_BREADTH_FIRST_H

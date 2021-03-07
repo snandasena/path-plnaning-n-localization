@@ -33,4 +33,7 @@ set(CMAKE_CXX_STANDARD 14)
 #        behavior_planner/road.h behavior_planner/road.cpp)
 
 
-add_executable(hybrid_a_star hybrid_a_star/main.cpp hybrid_a_star/hybrid_breadth_first.cpp hybrid_a_star/hybrid_breadth_first.h)
+#add_executable(hybrid_a_star hybrid_a_star/main.cpp hybrid_a_star/hybrid_breadth_first.cpp
+#hybrid_a_star/hybrid_breadth_first.h)
+
+add_executable(polynomial_solver polynomial_solver/grader.h polynomial_solver/main.cpp)
